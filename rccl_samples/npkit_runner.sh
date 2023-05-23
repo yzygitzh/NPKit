@@ -10,7 +10,7 @@ set -x
 function rccl_test() {
   mpirun \
     -map-by ppr:16:node --bind-to numa \
-    -x LD_LIBRARY_PATH=$2/build:$LD_LIBRARY_PATH \
+    -x LD_PRELOAD=$2/build/librccl.so:$LD_PRELOAD \
     -x NCCL_DEBUG=WARN \
     -x NCCL_ALGO=$4 \
     -x NCCL_PROTO=$5 \
